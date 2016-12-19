@@ -16,19 +16,10 @@ printNews();
 * marcado el atributo "highlighted" como TRUE
 */
 function renderHighlightedRecipes(recipesArray) {
-	/*$(recipesArray).each(function(){
-		var parametroRenderRecipe = "";
-		for (i=0; i<recipesArray.length; i++){
-			if (attr("highlighted")){
-				parametroRenderRecipe += recipesArray[i];
-			}
-		}
-		renderRecipe(parametroRenderRecipe);
-	});*/
 	$.each(recipesArray,function(i, parametroRR){
-		if (recipesArray.hasOwnProperty("highlighted"){
+		if (recipesArray.highlighted == true){
 			parametroRR += recipesArray[i];
-		});
+		};
 		renderRecipe(parametroRR);
 	});
 	console.log('Recipes: ', recipesArray);
@@ -41,17 +32,21 @@ function renderHighlightedRecipes(recipesArray) {
 * archivo "templates/templates-recipe.html"
 */
 function renderRecipe(recipe) {
-	$(".list-recipes").append('<span class="attribution"></span>');
+	$(".list-recipes").append('<a class="item-recipe" href="#"></a>');
+	$(".item-recipe").append('<span class="attribution"></span>');
 	$(".attribution").append('<span class="title-recipe"></span>');
-	$(".title-recipe").html();
-	$(".title-recipe").attr('title');
+	var tituloReceta = recipe.title;
+	$(".title-recipe").html(tituloReceta);
 	$(".attribution").append('<span class="metadata-recipe"></span>');
 	$(".metadata-recipe").append('<span class="author-recipe"></span>');
+	var sourceReceta = recipe.source;
+	var autorReceta = sourceReceta.name;
 	$(".author-recipe").html();
-	$(".author-recipe").attr();
 	$(".metadata-recipe").append('<span class="bookmarks-recipe"></span>');
 	$(".bookmarks-recipe").append('<span class="icon-bookmark"></span>');
 	$(".list-recipes").append('<img src=""/>');
+	var imgReceta = sourceReceta.url;
+	$(".list-recipes img").attr("src", imgReceta);
 	console.log('Voy a pintar la receta: ', recipe);
 }
 
@@ -61,6 +56,14 @@ function renderRecipe(recipe) {
 * Función que se encarga de pintar todas las actividades
 */
 function renderActivities(activitiesArray) {
+	$.each(activitiesArray, function(y, paramActivities){
+		for (y=0; y<activitiesArray.length ; y++){
+			renderActivity(activitiesArray[y]);
+		}
+	})
+	if (activitiesArray != 0){
+		$(".wrapper-message").hide();
+	}
 	console.log('Activities: ', activitiesArray);
 }
 
