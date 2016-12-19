@@ -16,6 +16,21 @@ printNews();
 * marcado el atributo "highlighted" como TRUE
 */
 function renderHighlightedRecipes(recipesArray) {
+	/*$(recipesArray).each(function(){
+		var parametroRenderRecipe = "";
+		for (i=0; i<recipesArray.length; i++){
+			if (attr("highlighted")){
+				parametroRenderRecipe += recipesArray[i];
+			}
+		}
+		renderRecipe(parametroRenderRecipe);
+	});*/
+	$.each(recipesArray,function(i, parametroRR){
+		if (recipesArray.hasOwnProperty("highlighted"){
+			parametroRR += recipesArray[i];
+		});
+		renderRecipe(parametroRR);
+	});
 	console.log('Recipes: ', recipesArray);
 }
 
