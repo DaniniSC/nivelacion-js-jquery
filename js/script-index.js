@@ -61,8 +61,10 @@ function renderActivities(activitiesArray) {
 			renderActivity(activitiesArray[y]);
 		}
 	})
-	if (activitiesArray != 0){
-		$(".wrapper-message").hide();
+	for (cantObj=0; cantObj<activitiesArray.length; cantObj++){
+		if (cantObj > 0){
+			$(".wrapper-message").hide();
+		}
 	}
 	console.log('Activities: ', activitiesArray);
 }
